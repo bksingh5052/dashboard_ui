@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Swipper js css  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+</head>
+
+<body>
+    <div class="container">
+
+        <aside>
+            <div class="top-list">
+                <div class="logo-box">
+                    <img src="images/logo.png">
+                    <h1>Parsefinance</h1>
+                </div>
+                <i class='bx bx-x' id="navCloseBtn"></i>
+            </div>
+            <ul class="navlist">
+                <li class="list active">
+                    <a href="#">
+                        <i class='bx bxs-grid-alt'></i>
+                        <h3>Dashboard</h3>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <i class='bx bxs-wallet'></i>
+                        <h3>My Wallet</h3>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <i class='bx bx-transfer-alt'></i>
+                        <h3>Transactions</h3>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <i class='bx bxs-receipt'></i>
+                        <h3>invoices</h3>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <i class='bx bxs-credit-card'></i>
+                        <h3>Cards</h3>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <i class='bx bxs-cog'></i>
+                        <h3>Setting</h3>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <i class='bx bxs-check-shield'></i>
+                        <h3>Security</h3>
+                    </a>
+                </li>
+                <li class="list">
+                    <a href="#">
+                        <i class='bx bxs-help-circle'></i>
+                        <h3>Help Center</h3>
+                    </a>
+                </li>
+                <li class="logout">
+                    <a href="#">
+                        <i class='bx bxs-log-out'></i>
+                        <h3>Logout</h3>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main>
+            <div class="topSearch">
+                <div class="switch-theme">
+                    <div class="switch-icons">
+                        <span class="sun active">
+                            <i class='bx bxs-sun'></i>
+                        </span>
+                        <span class="moon theme">
+                            <i class='bx bxs-moon'></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="search-box">
+                    <i class='bx bx-search'></i>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+
+            <div class="details-box">
+                <div class="content">
+                    <div class="income">
+
+                        <div class="left-content">
+                            <div class="badge">
+                                <i class='bx bx-left-arrow-alt'></i>
+                            </div>
+                            <div class="info">
+                                <span>Income</span>
+                                <h4>₹ 23,560</h4>
+                            </div>
+                        </div>
+                        <div class="right-content">
+                            <div class="top">
+                                <i class='bx bxs-down-arrow'></i>
+                                <p>-0.3%</p>
+                            </div>
+                            <span>30 Days</span>
+                        </div>
+                    </div>
+                    <div>
+                        <canvas id="myChartOne" height="100px"></canvas>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div class="outcome">
+
+                        <div class="left-content">
+                            <div class="badge">
+                                <i class='bx bx-left-arrow-alt'></i>
+                            </div>
+                            <div class="info">
+                                <span>outcome</span>
+                                <h4>₹ 13,630</h4>
+                            </div>
+                        </div>
+                        <div class="right-content">
+                            <div class="top">
+                                <i class='bx bxs-up-arrow'></i>
+                                <p>+0.5%</p>
+                            </div>
+                            <span>30 Days</span>
+                        </div>
+                    </div>
+                    <div>
+                        <canvas id="myChartTwo" height="100px"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chartBox">
+                <div class="main-text">
+                    <h2>Overflow</h2>
+                    <div class="legend-box">
+                        <button onclick="toggleData(0)" class="first">This week</button>
+                        <button onclick="toggleData(1)" class="second">Last week</button>
+                        <span>Week <i class='bx bxs-down-arrow'></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    <canvas id="myChartThree" height="250px"></canvas>
+                </div>
+            </div>
+
+            <div class="chartBox">
+                <div class="main-text">
+                    <h2>Activity</h2>
+                    <div class="legend-box">
+                        <span>Week <i class='bx bxs-down-arrow'></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="details-chart">
+                    <div style="width: 100%; height: 220px;">
+                        <canvas id="myChartFour" height="250px"></canvas>
+                    </div>
+                    <div class="info-box">
+                        <div class="info">
+                            <div class="legend-box">
+                                <i class='bx bxs-circle' style="color: #36a2ab;"></i>
+                                <h3>Monthly</h3>
+                            </div>
+                            <span style="color: #36a2ab;">26%</span>
+                        </div>
+                        <div class="info">
+                            <div class="legend-box">
+                                <i class='bx bxs-circle' style="color: #ff6384;"></i>
+                                <h3>Groceries</h3>
+                            </div>
+                            <span style="color: #ff6384;">15%</span>
+                        </div>
+                        <div class="info">
+                            <div class="legend-box">
+                                <i class='bx bxs-circle' style="color: #ff9f40;"></i>
+                                <h3>Subscribing</h3>
+                            </div>
+                            <span style="color: #ff9f40;">36%</span>
+                        </div>
+                        <div class="info">
+                            <div class="legend-box">
+                                <i class='bx bxs-circle' style="color: #ffcd56;"></i>
+                                <h3>Tax</h3>
+                            </div>
+                            <span style="color: #ffcd56;">17%</span>
+                        </div>
+                        <div class="info">
+                            <div class="legend-box">
+                                <i class='bx bxs-circle' style="color: #4bc0c0;"></i>
+                                <h3>Other</h3>
+                            </div>
+                            <span style="color: #4bc0c0;">26%</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="transactionBox">
+                <div class="main-text">
+                    <h2>Transaction</h2>
+                    <div class="legend-box">
+                        <a href="" class="active">Yearly</a>
+                        <a href="">Monthly</a>
+                        <a href="">Weekly</a>
+                        <a href="">Today</a>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="./images/brand logo/wix.png" alt="">Canva</td>
+                            <td>₹ 16,560</td>
+                            <td>11 Aug, 2023</td>
+                            <td><span class="completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td><img src="./images/brand logo/picMonkey.jpg" alt="">PickMonkey</td>
+                            <td>₹ 12,340</td>
+                            <td>07 Aug, 2023</td>
+                            <td><span class="completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td><img src="./images/brand logo/amazon.png" alt="">Amazon</td>
+                            <td>₹ 17,420</td>
+                            <td>26 Jul, 2023</td>
+                            <td><span class="completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td><img src="./images/brand logo/Sony.jpg" alt="">Sony</td>
+                            <td>₹ 15,890</td>
+                            <td>13 Jul, 2023</td>
+                            <td><span class="cancelled">Cancelled</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+        <div class="right">
+            <div class="header-right">
+                <div class="menuIcons">
+                    <i class='bx bx-menu'></i>
+                </div>
+
+                <div class="topIcons">
+                    <div class="icon">
+                        <i class='bx bxs-message-square-detail bx-tada'></i>
+                        <span>3</span>
+                    </div>
+                    <div class="icon">
+                        <i class='bx bxs-bell bx-tada'></i>
+                        <span>2</span>
+                    </div>
+                    <div class="icon">
+                        <i class='bx bxs-cog'></i>
+                    </div>
+                </div>
+                <div class="profile">
+                    <div class="name">
+                        <p>Bablu Singh</p>
+                        <span>bk@gmail.com</span>
+                    </div>
+                    <div class="pic">
+                        <img src="./images/mypic.jpg" alt="">
+                        <i class='bx bxs-chevron-down'></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-info">
+                <div class="main-text">
+                    <h2>My Card</h2>
+                    <div class="icon-box">
+                        <div class="icon">
+                            <i class='bx bx-plus'></i>
+                        </div>
+                        <div class="icon">
+                            <i class='bx bxs-cog'></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card  mySwiper">
+                    <div class="card-list swiper-wrapper">
+                        <div class="card-item swiper-slide card-item1">
+                            <div class="card-header">
+                                <span class="logo">
+                                    <img src="./images/card-Images/logo.png" alt="">
+                                    <h5>Master Card</h5>
+                                </span>
+                                <img src="./images/card-Images/chip.png" alt="" class="chip">
+                            </div>
+                            <div class="card-details">
+                                <div class="name-number">
+                                    <h6>Card Number</h6>
+                                    <h5 class="number">**** **** **** 5684</h5>
+                                </div>
+                            </div>
+                            <div class="valid-date">
+                                <h5 class="name">Bablu Singh</h5>
+                                <div class="valid-thru">
+                                    <h6>Valid Thru</h6>
+                                    <h5>08/2027</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-item swiper-slide card-item2">
+                            <div class="card-header">
+                                <span class="logo">
+                                    <img src="./images/card-Images/logo.png" alt="">
+                                    <h5>Master Card</h5>
+                                </span>
+                                <img src="./images/card-Images/chip.png" alt="" class="chip">
+                            </div>
+                            <div class="card-details">
+                                <div class="name-number">
+                                    <h6>Card Number</h6>
+                                    <h5 class="number">**** **** **** 5684</h5>
+                                </div>
+                            </div>
+                            <div class="valid-date">
+                                <h5 class="name">Bablu Singh</h5>
+                                <div class="valid-thru">
+                                    <h6>Valid Thru</h6>
+                                    <h5>08/2027</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-item swiper-slide card-item3">
+                            <div class="card-header">
+                                <span class="logo">
+                                    <img src="./images/card-Images/logo.png" alt="">
+                                    <h5>Master Card</h5>
+                                </span>
+                                <img src="./images/card-Images/chip.png" alt="" class="chip">
+                            </div>
+                            <div class="card-details">
+                                <div class="name-number">
+                                    <h6>Card Number</h6>
+                                    <h5 class="number">**** **** **** 5684</h5>
+                                </div>
+                            </div>
+                            <div class="valid-date">
+                                <h5 class="name">Bablu Singh</h5>
+                                <div class="valid-thru">
+                                    <h6>Valid Thru</h6>
+                                    <h5>08/2027</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-item swiper-slide card-item4">
+                            <div class="card-header">
+                                <span class="logo">
+                                    <img src="./images/card-Images/logo.png" alt="">
+                                    <h5>Master Card</h5>
+                                </span>
+                                <img src="./images/card-Images/chip.png" alt="" class="chip">
+                            </div>
+                            <div class="card-details">
+                                <div class="name-number">
+                                    <h6>Card Number</h6>
+                                    <h5 class="number">**** **** **** 5684</h5>
+                                </div>
+                            </div>
+                            <div class="valid-date">
+                                <h5 class="name">Bablu Singh</h5>
+                                <div class="valid-thru">
+                                    <h6>Valid Thru</h6>
+                                    <h5>08/2027</h5>
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+
+                    <div class="pagination">
+                        <div class="swiper-button-prev"><i class='bx bx-chevron-left' ></i></div>
+                        <div class="swiper-button-next"><i class='bx bx-chevron-right' ></i></div>
+                    </div>
+                </div>
+
+                <div class="card-details">
+                    <h2>Card Details</h2>
+                    <div class="all-info-card">
+                        <div class="info-card-item">
+                            <p>Balance</p>
+                            <span class="balance">₹ 4,550</span>
+                        </div>
+                         <div class="info-card-item">
+                            <p>Card Name</p>
+                            <span >Main Card</span>
+                        </div>
+                         <div class="info-card-item">
+                            <p>Card Number</p>
+                            <span >**** **** **** 5684</span>
+                        </div>
+                         <div class="info-card-item">
+                            <p>Bank</p>
+                            <span >Bank Of India</span>
+                        </div>
+                         <div class="info-card-item">
+                            <p>Name</p>
+                            <span >Bablu Singh</span>
+                        </div>
+                         <div class="info-card-item">
+                            <p>Valid Thru</p>
+                            <span >08/2027</span>
+                        </div>
+                        
+                    </div>
+
+                    <div class="manageBtn">
+                        <a href="#">Manage  Cards</a>
+                    </div>
+                     <div class="transferBtn">
+                        <a href="#">Transfer</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="friends">
+                <div class="main-text">
+                    <h2>Friends</h2>
+                    <div class="search-box">
+                        <i class='bx bx-search'></i>
+                        <input type="text" placeholder="Search">
+                    </div>
+                </div>
+
+                <div class="friendBox">
+                    <div class="service">
+                        <img src="./images/avatar1.jpg" alt="">
+                        <div class="friendName">
+                            <h4>Chandan Kumar</h4>
+                            <span>chandan@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="messageIcon">
+                        <i class='bx bxs-message-square-detail'></i>
+                    </div>
+                </div>
+                <div class="friendBox">
+                    <div class="service">
+                        <img src="./images/avatar2.jpg" alt="">
+                        <div class="friendName">
+                            <h4>Pradatta Jha</h4>
+                            <span>pradatta@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="messageIcon">
+                        <i class='bx bxs-message-square-detail'></i>
+                    </div>
+                </div>
+                <div class="friendBox">
+                    <div class="service">
+                        <img src="./images/avatar3.jpg" alt="">
+                        <div class="friendName">
+                            <h4>Shashank Ojha</h4>
+                            <span>shashank@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="messageIcon">
+                        <i class='bx bxs-message-square-detail'></i>
+                    </div>
+                </div>
+                <div class="friendBox">
+                    <div class="service">
+                        <img src="./images/avatar4.jpg" alt="">
+                        <div class="friendName">
+                            <h4>Vandana Kumari</h4>
+                            <span>motki@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="messageIcon">
+                        <i class='bx bxs-message-square-detail'></i>
+                    </div>
+                </div>
+                <div class="friendBox">
+                    <div class="service">
+                        <img src="./images/avatar5.jpg" alt="">
+                        <div class="friendName">
+                            <h4>Chitranjan Kumar</h4>
+                            <span>chitu@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="messageIcon">
+                        <i class='bx bxs-message-square-detail'></i>
+                    </div>
+                </div>
+                <div class="friendBox">
+                    <div class="service">
+                        <img src="./images/avatar6.jpg" alt="">
+                        <div class="friendName">
+                            <h4>Ramvi Kumar</h4>
+                            <span>ramvi@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="messageIcon">
+                        <i class='bx bxs-message-square-detail'></i>
+                    </div>
+                </div>
+                <div class="friendBox">
+                    <div class="service">
+                        <img src="./images/avatar1.jpg" alt="">
+                        <div class="friendName">
+                            <h4>Nishant Mishra</h4>
+                            <span>nishant@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="messageIcon">
+                        <i class='bx bxs-message-square-detail'></i>
+                    </div>
+                </div>
+                <div class="friendBox">
+                    <div class="service">
+                        <img src="./images/avatar2.jpg" alt="">
+                        <div class="friendName">
+                            <h4>Aryan Kumar</h4>
+                            <span>aryan@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="messageIcon">
+                        <i class='bx bxs-message-square-detail'></i>
+                    </div>
+                </div>
+                <div class="friendBox">
+                    <div class="service">
+                        <img src="./images/avatar3.jpg" alt="">
+                        <div class="friendName">
+                            <h4>Virat Kumar</h4>
+                            <span>virat@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="messageIcon">
+                        <i class='bx bxs-message-square-detail'></i>
+                    </div>
+                </div>
+                <div class="friendBox">
+                    <div class="service">
+                        <img src="./images/avatar4.jpg" alt="">
+                        <div class="friendName">
+                            <h4>Vishnu Kumar</h4>
+                            <span>vishnu@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="messageIcon">
+                        <i class='bx bxs-message-square-detail'></i>
+                    </div>
+                </div>
+               
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <!-- Chart Js link  -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    
+    <!-- Swipper Js Link  -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
